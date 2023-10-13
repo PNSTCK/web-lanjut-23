@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use app\Http\Controllers\CategoryController;
+use app\Http\Controllers\AbController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/category', [app\Http\Controllers\CategoryController::class, 'index'])->name('category-index');
+Route::get('/category/create', [app\Http\Controllers\CategoryController::class, 'tambah'])->name('category-create');
+Route::post('/category/store', [app\Http\Controllers\CategoryController::class, 'simpan'])->name('category-store');
+
+Route::get('/dashboard', function () {
+    return view ('dashboard');
+})->name('dashboard');
+
+// Route::get('ab', [AbController::class, 'index'])->name('ab');
+
 Route::get('/', function () {
     return view ('welcome');
 });
@@ -24,6 +37,5 @@ Route::get('/', function () {
     return view ('universitas.mahasiswa')->with('mahasiswa', $array_nama);
 });
 
-Route::get('/admin', function () {
-    return view ('dashboard');
-});
+
+
