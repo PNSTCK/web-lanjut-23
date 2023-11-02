@@ -5,20 +5,20 @@
         <div class="row">
             <div class="col-md-6">
 
-                <a href="" class="btn btn-primary mb-4">
+                <a href="" class="btn btn-primary mb-3">
                     <i class="fas fa-plus">tambah data</i>
 
                 <div class="card">
-                    <div class="card-header">data kategory</div>
+                    <div class="card-header">data chasier</div>
                     <div class="card-body"></div>
 
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Nama category</th>
-                                <th>Tanggal</th>
-                                <th>Aksi</th>
+                                <th>ID</th>
+                                <th>Nama chashier</th>
+                                <th>Telpon</th>
+                                <th>Umur</th>
                             </tr>
                         </thead>
 
@@ -28,18 +28,10 @@
                                 <tr>
                                     <td> {{ $loop->iteration }} </td>
                                     <td> {{ $row->name }} </td>
+                                    <td> {{ $row->phone }} </td>
+                                    <td> {{ $row->age }} </td>
                                     <td> {{ $row->created_at }} </td>
-                                    <td>
-                                        <form method="POST" action="{{route('category-delete', $row->id)}}">
-                                            @csrf
-                                            @method('delete')
-                                            <input type="submit" value="Del" class="btn btn-danger">
-
-                                            <a href="{{route('category-edit', $row->id) }}"
-                                                class="btn btn-warning">edit</a>
-
-                                        </form>
-                                    </td>
+                                    <td>Update | Delete</td>
                                 </tr>
                             @endforeach
 

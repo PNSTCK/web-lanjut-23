@@ -1,27 +1,25 @@
 <?php
 
- namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use app\Models\Category;
-
-class CategoryController extends Controller
+class SupplierController extends Controller
 {
     public function index() {
-        $data = Category::all();
+        $data = Supplier::all();
 
         dd($data);
+    }
+
+    public function tambah () {
+        return view('supplier.create');
     }
 
     public function tampil() {
         $data = Category::all();
 
-        return view('category.index', compact('data'));
-    }
-
-    public function tambah () {
-        return view('category.create');
+        return view('supllierier.index', compact('data'));
     }
 
     public function simpan(Request $request){
@@ -29,19 +27,17 @@ class CategoryController extends Controller
             'name'=> 'required|min:5'
         ]);
         Category::create($request->all());
-        return to_route('category-index');
+        return to_route('supplier-index');
     }
-
-
 
     public function delete($id) {
         Category::find ($id) -> delete();
-        return to_route('category-index');
+        return to_route('supplier-index');
     }
 
     public function edit($id) {
         $data = Category::find ($id);
-        return view('category.edit', compact('data'));
+        return view('supplier.edit', compact('data'));
     }
 
     public function update(Request $request) {
@@ -50,6 +46,6 @@ class CategoryController extends Controller
         ]);
 
         Category::find($id) -> update($request->all());
-        return to_route('category-index');
+        return to_route('supplier-index');
     }
 }
